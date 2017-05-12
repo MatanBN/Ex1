@@ -14,6 +14,7 @@ namespace Ex1
     {
         static void Main(string[] args)
         {
+            int i = 5;
             CompareSolvers();
         }
 
@@ -31,12 +32,6 @@ namespace Ex1
             int DFSNodes = dfs.getNumberOfNodesEvaluated();
             Console.WriteLine($"Nodes: {BFSNodes}");
             Console.WriteLine($"Nodes: {DFSNodes}");
-            
-
-
-
-
-
         }
     }
 }
