@@ -8,30 +8,34 @@ using MazeGeneratorLib;
 using MazeLib;
 using SearchAlgorithmsLib;
 
-namespace Ex1
+namespace ServerSide
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int i = 5;
-            CompareSolvers();
+            //CompareSolvers();
+            
+            Server s = new Server(6666, new ClientHandler(), "127.0.0.1");
+            s.Start();
+            
         }
 
         public static void CompareSolvers()
         {
             DFSMazeGenerator mazeGen = new DFSMazeGenerator();
-            Maze maze = mazeGen.Generate(100,100);
+            Maze maze = mazeGen.Generate(10,10);
             SearchableMaze sm = new SearchableMaze(maze);
             Console.WriteLine(maze);
-            BFSSearcher<Position> bfs= new BFSSearcher<Position>();
-            DFSSearcher<Position> dfs = new DFSSearcher<Position>();
+            BFSSearcher bfs= new BFSSearcher();
+            DFSSearcher dfs = new DFSSearcher();
             Solution BFSSolution = bfs.search(sm);
             Solution DFSSolution = dfs.search(sm);
+           // Console.WriteLine($"Nodes: {BFSNodes}");
+           // Console.WriteLine($"Nodes: {DFSNodes}");
             int BFSNodes = bfs.getNumberOfNodesEvaluated();
             int DFSNodes = dfs.getNumberOfNodesEvaluated();
-            Console.WriteLine($"Nodes: {BFSNodes}");
-            Console.WriteLine($"Nodes: {DFSNodes}");
+
         }
     }
 }

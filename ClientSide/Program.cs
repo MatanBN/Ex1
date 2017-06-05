@@ -10,6 +10,11 @@ namespace ClientSide
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
+                Client c = new Client("127.0.0.1", 6666);
+                c.Connect();
+            }
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using MazeLib;
 using SearchAlgorithmsLib;
 
-namespace Ex1
+namespace ServerSide
 {
-    class SearchableMaze : ISearchable<Position>
+    class SearchableMaze : ISearchable
     {
         private Maze m;
 
@@ -19,8 +19,9 @@ namespace Ex1
 
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
-            List<State<Position>> possibleStates = new List<State<Position>>();
             Position p = s.StateRepresentation;
+            List<State<Position>> possibleStates = new List<State<Position>>();
+
             if (p.Col > 0)
             {
                 if (m[p.Row, p.Col - 1] == CellType.Free)
